@@ -9,7 +9,6 @@ import './App.css'
 
 class BooksApp extends React.Component {
   state = {
-    books:   [],
     shelfCR: [],
     shelfWR: [],
     shelfR:  [],
@@ -21,13 +20,49 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount(){
-    //BooksAPI.getAll().then((books) => { this.setState({ books: books }) })
+    /*BooksAPI.getAll().then((books) => { this.setState({ books: books }) })*/
+    this.loadBooks()
+  }
+
+  loadBooks = () => {
     BooksAPI.getAll().then((shelf) => { this.setState({
         shelfCR: shelf.filter((b) => b.shelf === "currentlyReading"),
         shelfWR: shelf.filter((b) => b.shelf === "wantToRead"),
-        shelfR: shelf.filter((b) => b.shelf === "read")
+        shelfR: shelf.filter((b)  => b.shelf === "read")
       })
     })
+  }
+
+  changeBookShelf = (book, newShelf) => {
+    BooksAPI.update(book, newShelf)
+    //this.loadBooks()
+    this.removeBook(book)
+    this.addBook(book, newShelf)
+
+  }
+  removeBook = (book) => {
+    switch (book.shelf) {
+      case "currentlyReading":this.setState((state) => ({ shelfCR: state.shelfCR.filter((b) => b.id !== book.id) }))
+        break;
+      case "wantToRead":this.setState((state) => ({ shelfWR: state.shelfWR.filter((b) => b.id !== book.id) }))
+        break;
+      case "read":this.setState((state) => ({ shelfR: state.shelfR.filter((b) => b.id !== book.id) }))
+        break;
+      default:
+    }
+  }
+
+  addBook = (book, newShelf) => {
+    book.shelf = newShelf
+    switch (book.shelf) {
+      case "currentlyReading":this.setState((state) => ({ shelfCR: state.shelfCR.concat([book]) }))
+        break;
+      case "wantToRead":this.setState((state) => ({ shelfWR: state.shelfWR.concat([book]) }))
+        break;
+      case "read":this.setState((state) => ({ shelfR: state.shelfR.concat([book]) }))
+        break;
+      default:
+    }
   }
 
   render() {
@@ -63,9 +98,10 @@ class BooksApp extends React.Component {
           </div>
           <div className="list-books-content">
             <div>
-              <Bookshelf books={this.state.shelfCR} statusBook={this.state.statusReading[0]}/>
-              <Bookshelf books={this.state.shelfWR} statusBook={this.state.statusReading[1]}/>
-              <Bookshelf books={this.state.shelfR} statusBook={this.state.statusReading[2]}/>
+              {/*<Bookshelf books={this.state.books} />*/}
+              <Bookshelf books={this.state.shelfCR} statusBook={this.state.statusReading[0]} onChangeShelf={this.changeBookShelf}/>
+              <Bookshelf books={this.state.shelfWR} statusBook={this.state.statusReading[1]} onChangeShelf={this.changeBookShelf}/>
+              <Bookshelf books={this.state.shelfR} statusBook={this.state.statusReading[2]} onChangeShelf={this.changeBookShelf}/>
             </div>
           </div>
           <div className="open-search">
