@@ -2,13 +2,22 @@ import React, { Component } from 'react'
 
 class WidgetBook extends Component {
 
+  onDragStart = (ev, book) => {
+    console.log('dragstart', book)
+    ev.dataTransfer.setData('book', JSON.stringify(book))
+  }
+
   render(){
     //console.log('Props: ', this.props)
     const { books, onChangeShelf, shelf } = this.props
     return(
       <ol className="books-grid">
+
         {books.map((book) => (
-          <li key={book.id}>
+          <li key={book.id}
+            draggable
+            onDragStart={(e) => this.onDragStart(e, book)}
+            >
             <div className="book">
               <div className="book-top">
                 <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail}")` }}></div>

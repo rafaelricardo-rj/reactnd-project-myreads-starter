@@ -13,12 +13,17 @@ class BooksApp extends React.Component {
     shelfWR: [],
     shelfR:  [],
     statusReading: [
-      "Currently Reading",
-      "Want to Read",
-      "Read"
+      {"name": "currentlyReading", "viewName": "Currently Reading"},
+      {"name": "wantToRead", "viewName": "Want to Read"},
+      {"name": "read", "viewName": "Read"}
     ]
   }
 
+/*statusReading: [
+  "Currently Reading",
+  "Want to Read",
+  "Read"
+]*/
   componentDidMount(){
     /*BooksAPI.getAll().then((books) => { this.setState({ books: books }) })*/
     this.loadBooks()
@@ -26,9 +31,9 @@ class BooksApp extends React.Component {
 
   loadBooks = () => {
     BooksAPI.getAll().then((shelf) => { this.setState({
-        shelfCR: shelf.filter((b) => b.shelf === "currentlyReading"),
-        shelfWR: shelf.filter((b) => b.shelf === "wantToRead"),
-        shelfR: shelf.filter((b)  => b.shelf === "read")
+        shelfCR: shelf.filter((b) => b.shelf === "currentlyReading").sort(sortBy('title')),
+        shelfWR: shelf.filter((b) => b.shelf === "wantToRead").sort(sortBy('title')),
+        shelfR: shelf.filter((b)  => b.shelf === "read").sort(sortBy('title'))
       })
     })
   }
@@ -55,11 +60,11 @@ class BooksApp extends React.Component {
   addBook = (book, newShelf) => {
     book.shelf = newShelf
     switch (book.shelf) {
-      case "currentlyReading":this.setState((state) => ({ shelfCR: state.shelfCR.concat([book]) }))
+      case "currentlyReading":this.setState((state) => ({ shelfCR: state.shelfCR.concat([book]).sort(sortBy('title')) }))
         break;
-      case "wantToRead":this.setState((state) => ({ shelfWR: state.shelfWR.concat([book]) }))
+      case "wantToRead":this.setState((state) => ({ shelfWR: state.shelfWR.concat([book]).sort(sortBy('title')) }))
         break;
-      case "read":this.setState((state) => ({ shelfR: state.shelfR.concat([book]) }))
+      case "read":this.setState((state) => ({ shelfR: state.shelfR.concat([book]).sort(sortBy('title')) }))
         break;
       default:
     }
