@@ -1,6 +1,11 @@
-{
+{ 
+  "name": "website",
+  "version": "0.2.0",
+  "private": true,
+  "homepage": "https://rafaelricardo-rj.github.io/reactnd-project-myreads-starter/",
   "dependencies": {
     "form-serialize": "^0.7.2",
+    "gh-pages": "^2.0.1",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -14,6 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   }
 }
