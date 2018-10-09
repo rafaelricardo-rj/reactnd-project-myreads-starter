@@ -41,7 +41,7 @@ What improvement has been created?
         + draggable     - Boolean to enable or not dragging the WidgetBook to another shelf. (Parameter Required)
         + shelf         - Define the status of reading. It is an object. Eg: {"name": "currentlyReading", "viewName": "Currently Reading"} (Parameter NOT Required)
         + bookMarked    - If WidgetBook is called from Bookshelf.js, it must be a function. In this case, it is a      function in Bookshelf.js called checkBoxAction. This function enable or not the checkbox to be marked to change books in batch. If WidgetBook.js is called from Search.js component, it must be false as the result of search can't creating WidgetBook with checkbox.
-    + 3 - SearchBooks.js -> Render a <ol> with WidgetBook inside. this component use the API BooksApi to search Books and  return a list.
+    + 3 - SearchBooks.js -> Render an <code>&lt;ol&gt;</code> with WidgetBook inside. this component use the API BooksApi to search Books and  return a list.
         * Parameters: none.
 
   * Implementations made by: Rafael Ricardo
