@@ -10,6 +10,7 @@ The point is to create shelfs with Books that you have read, want to read or tha
 This project is part of module 1 of course called Fundamentals of React. This part don't have Redux
 
 What are the improvement has been created?
+
 [ First Page (Main page) ]
 1 - Move a book from a shelf to another through of "select option"
 2 - Move a book from a shelf to another Dragging and drop the Book to other shelf
