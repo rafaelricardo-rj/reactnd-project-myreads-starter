@@ -1,4 +1,4 @@
-# Comments about new resources made by Rafael Ricardo
+### Comments about new resources made by Rafael Ricardo
 
 This is a fork of a project made by Udacity.com to their students.
 The original project is in https://github.com/udacity/reactnd-project-myreads-starter
@@ -11,23 +11,23 @@ This project is part of module 1 of course called Fundamentals of React. This pa
 
 What are the improvement has been created?
 
-[ First Page (Main page) ]
+* [ First Page (Main page) ]
 1 - Move a book from a shelf to another through of "select option"
 2 - Move a book from a shelf to another Dragging and drop the Book to other shelf
 3 - Move a batch of books from a shelf to another using checkbox
 4 - Link to go to the book details page
 5 - Counter of books per shelf
-[ Second Page (Search) ]
+* [ Second Page (Search) ]
 1 - Start search after 3 characters typed minimum
 2 - On result of search, show a label on the book with the name of the shelf if it is already in your library
 3 - Move a book from a shelf to another through of "select option"
 4 - Add a new book to the library in specific shelf
 5 - Link to go to the book details page
-[ Third page (Details Book) ]
+* [ Third page (Details Book) ]
 1 - Show more informations of the book as Publisher, Page count, Published date, Author and Categorie
 2 - Button to redirect to a page where you can buy the book
 
-Components Created:
+* Components Created:
   1 - Bookshelf.js -> Bookshel represent a shelf with a specific status reading and implement an <ol> tag.
         Parameters:
           books         - Array with all books of same status reading. Eg: currentlyReading|wantToRead|read (Parameter Required)
@@ -48,8 +48,8 @@ Components Created:
                         and return a list.
         Parameters: none.
 
-  Author of implementations: Rafael Ricardo
-  Email: rafael_rikardo@yahoo.com.br
+  * Author of implementations: Rafael Ricardo
+  * Email: rafael_rikardo@yahoo.com.br
 
 (ORIGINAL README.MD UDACITY BELOW)
 # MyReads Project
