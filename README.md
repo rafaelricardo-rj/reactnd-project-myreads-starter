@@ -28,7 +28,7 @@ What are the improvement has been created?
 + 2 - Button to redirect to a page where you can buy the book
 
 * Components Created:
-  + 1 - Bookshelf.js -> Bookshel represent a shelf with a specific status reading and implement an <code><ol></code> tag.
+  + 1 - Bookshelf.js -> Bookshel represent a shelf with a specific status reading and implement an "ol" tag.
         * Parameters:
           + books         - Array with all books of same status reading. Eg: currentlyReading|wantToRead|read (Parameter   Required)
           + onChangeShelf - Function in App.js that make the change of a shelf to another (Parameter Required)
