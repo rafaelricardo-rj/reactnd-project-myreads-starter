@@ -9,7 +9,7 @@
   The point is to create shelfs with Books that you have read, want to read or that you are currently reading
   This project is part of module 1 of course called Fundamentals of React. This part don't have Redux
 
-  What are the improvement has been created?
+  What improvement has been created?
   [ First Page (Main page) ]
   1 - Move a book from a shelf to another through of "select option"
   2 - Move a book from a shelf to another Dragging and drop the Book to other shelf
@@ -27,7 +27,7 @@
   2 - Button to redirect to a page where you can buy the book
 
   Components Created:
-    1 - Bookshelf.js -> Bookshel represent a shelf with a specific status reading and implement an <ol> tag.
+    1 - Bookshelf.js -> Bookshelf represent a shelf with a specific status reading and implement an <ol> tag.
           Parameters:
             books         - Array with all books of same status reading. Eg: currentlyReading|wantToRead|read (Parameter Required)
             onChangeShelf - Function in App.js that make the change of a shelf to another (Parameter Required)
@@ -47,7 +47,7 @@
                           and return a list.
           Parameters: none.
 
-    Author of implementations: Rafael Ricardo
+    Rafael Ricardo
     Email: rafael_rikardo@yahoo.com.br
 */
 import React from 'react'
