@@ -12,7 +12,7 @@ This project is part of module 1 of course called Fundamentals of React. This pa
 What are the improvement has been created?
 
 * [ First Page (Main page) ]
-+ 1 - Move a book from a shelf to another through of "select option"
+- 1 - Move a book from a shelf to another through of "select option"
 + 2 - Move a book from a shelf to another Dragging and drop the Book to other shelf
 + 3 - Move a batch of books from a shelf to another using checkbox
 + 4 - Link to go to the book details page
