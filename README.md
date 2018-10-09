@@ -45,7 +45,7 @@ What improvement has been created?
         * Parameters: none.
 
 
-* Implementations made by: Rafael Ricardo
+* Rafael Ricardo
 * Email: rafael_rikardo@yahoo.com.br
 
 (ORIGINAL README.MD UDACITY BELOW)
