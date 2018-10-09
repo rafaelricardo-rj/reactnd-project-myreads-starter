@@ -44,8 +44,9 @@ What improvement has been created?
     + 3 - SearchBooks.js -> Render an <code>&lt;ol&gt;</code> with WidgetBook inside. this component use the API BooksApi to search Books and  return a list.
         * Parameters: none.
 
-  * Implementations made by: Rafael Ricardo
-  * Email: rafael_rikardo@yahoo.com.br
+
+* Implementations made by: Rafael Ricardo
+* Email: rafael_rikardo@yahoo.com.br
 
 (ORIGINAL README.MD UDACITY BELOW)
 # MyReads Project
