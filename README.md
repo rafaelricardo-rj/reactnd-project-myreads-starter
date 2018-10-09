@@ -28,12 +28,12 @@ What improvement has been created?
   + 2 - Button to redirect to a page where you can buy the book
 
 * Components Created:
-    + 1 - Bookshelf.js -> Bookshel represent a shelf with a specific status reading and implement an <code>&lt;ol&gt;</code> tag.
+    + 1 - Bookshelf.js -> Bookshelf represent a shelf with a specific status reading and implement an <code>&lt;ol&gt;</code> tag.
       * Parameters:
         + books         - Array with all books of same status reading. Eg: currentlyReading|wantToRead|read (Parameter   Required)
         + onChangeShelf - Function in App.js that make the change of a shelf to another (Parameter Required)
         + statusBook    - This parameter define o name of shelf. It is an object. Eg: {"name": "currentlyReading", "viewName": "Currently Reading"} (Parameter Required)
-    + 2 - WidgetBook.js -> WidgetBook represent a book with cover, title and options to move to other shelf. it implement as return an <li> tag.
+    + 2 - WidgetBook.js -> WidgetBook represent a book with cover, title and options to move to other shelf. it implement as return an <code>&lt;li&gt;</code> tag.
       * Parameters:
         + book          - It is an Object that represent a book with all details (Parameter Required)
         + onChangeShelf - Function in App.js that make the change of a shelf to another (Parameter Required)
@@ -44,7 +44,7 @@ What improvement has been created?
     + 3 - SearchBooks.js -> Render a <ol> with WidgetBook inside. this component use the API BooksApi to search Books and  return a list.
         * Parameters: none.
 
-  * Author of implementations: Rafael Ricardo
+  * Implementations made by: Rafael Ricardo
   * Email: rafael_rikardo@yahoo.com.br
 
 (ORIGINAL README.MD UDACITY BELOW)
