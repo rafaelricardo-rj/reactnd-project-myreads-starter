@@ -1,6 +1,11 @@
+/*
+SearchBooks.js -> Render a <ol> with WidgetBook inside. this component use the API BooksApi to search Books
+                  and return a list.
+      Parameters: none.
+*/
 import React from 'react'
-import { Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import * as BooksAPI from '../BooksAPI'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
@@ -12,22 +17,22 @@ class SearchBooks extends React.Component {
     querySearch: ''
   }
 
-componentWillMount = () => {
+  static propTypes = {
+    onChangeShelf: PropTypes.func.isRequired,
+    allbooks: PropTypes.array.isRequired
+  }
 
-}
-
+/*
+  Refresh the query search after 3 characters typed and save the result in the State: resultBooks.
+  @query: String
+*/
 updateQuery = (query) => {
-
   this.setState({ querySearch: query });
   if(this.state.querySearch.length >= 2 ){
     BooksAPI.search(this.state.querySearch).then((books) => {
       this.setState({ resultBooks: books })
     })
   }
-}
-
-clearQuery = () => {
-  this.setState({ querySearch: '' })
 }
 
 render(){
@@ -43,11 +48,16 @@ render(){
     showingBooks = resultBooks.filter((resultBooks) => match.test(resultBooks.title))
   }
 
-  showingBooks.map((b) => {
+/* this part check wich books  from result is already in your library,
+   if it is true, add a parameter called "shelf" with the currently status reading.
+   This part is necessaire to the WidgetBook component to know what books must have label
+   with name of their status and enable/disabe Buttons to move it corretly between shelfs*/
+  showingBooks.map((b) => (
     allbooks.map((ab) => {
       if(ab.id === b.id){ b.shelf = ab.shelf }
+      return null
     })
-  })
+  ))
 
   showingBooks.sort(sortBy('title'))
 
@@ -56,27 +66,14 @@ render(){
       <div className="search-books-bar">
         <Link to="/" className='close-search'>Close</Link>
         <div className="search-books-input-wrapper">
-          {/*
-            NOTES: The search from BooksAPI is limited to a particular set of search terms.
-            You can find these search terms here:
-            https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-            However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-            you don't find a specific author or title. Every search is limited by search terms.
-          */}
           <input onChange={(event) => this.updateQuery(event.target.value)} value={this.state.querySearch} type="text" placeholder="Search by title or author"/>
-
         </div>
       </div>
       <div className="search-books-results">
         {showingBooks.length > 0 && (
-
           <ol className="books-grid">
             {showingBooks.map((book) => (
-
-              //checkBook = this.props.allBooks.filter((b) => {b.id === book.id})
-              //  checkBook ? console.log(checkBook) : console.log('nof')
-              <WidgetBook key={book.id} book={book} onChangeShelf={this.props.onChangeShelf} shelf={{}} showStatus={true} bookMarked={false} draggable={false}/>
+              <WidgetBook key={book.id} book={book} onChangeShelf={onChangeShelf} shelf={{}} showStatus={true} bookMarked={false} draggable={false}/>
             ))}
           </ol>
         )}

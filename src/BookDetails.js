@@ -1,5 +1,4 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 
@@ -11,18 +10,15 @@ class BookDetails extends React.Component {
   }
 
 componentDidMount () {
-  //console.log(this.props.match.params.idBook);
-
   BooksAPI.get(this.props.match.params.idBook).then((book) => {
     this.setState({ book: book })
     this.rating()
   })
-
 }
 
 rating = () => {
   for (let i = 0; i < this.state.book.averageRating; i++){
-    this.setState({ stars: this.state.stars.concat({ "id": i, "img": <img src={require("./icons/if_star_299040.png")} alt="Generic placeholder image" />}) })
+    this.setState({ stars: this.state.stars.concat({ "id": i, "img": <img src={require("./icons/if_star_299040.png")} alt={'star number '+ i} />}) })
   }
 }
 
@@ -33,7 +29,7 @@ render(){
       <div className="search-books-bar">
         <Link to="/" className='close-search'>Close</Link>
         <div className="search-books-input-wrapper vcenter">
-        
+
         </div>
       </div>
       <div className="search-books-results">
@@ -41,7 +37,7 @@ render(){
           <div className="row justify-content-sm-center"><h4>{book.title}</h4></div>
           <div className="row justify-content-sm-center">
             <div className="col-sm-auto">
-              <img className="align-self-center img-thumbnail" src={book.imageLinks ? book.imageLinks.thumbnail : 'https://morpheudoidao.com.br/no_pic_thin.jpg'} alt="Generic placeholder image" />
+              <img className="align-self-center img-thumbnail" src={book.imageLinks ? book.imageLinks.thumbnail : 'https://morpheudoidao.com.br/no_pic_thin.jpg'} alt={book.title} />
               <div className="row align-self-center">
                 <ol className="stars align-self-center">
                   {stars.map((s) => (
